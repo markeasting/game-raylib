@@ -1,9 +1,10 @@
 #pragma once
 
-class SceneManager; // forward declaration, prevent circular import
+// class SceneManager; // forward declaration, prevent circular import
 
 class Scene {
 public:
+
     // Called when scene initially created. Called once.
     virtual void OnCreate() = 0;
 
@@ -28,5 +29,5 @@ public:
     // virtual ~Scene() = 0;
 
 private:
-    friend SceneManager;
+    // friend SceneManager;
 };

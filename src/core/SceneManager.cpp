@@ -2,39 +2,33 @@
 #include "Scene.h"
 #include "SceneManager.h"
 
-SceneManager::SceneManager() : scenes(0), curScene(0) { }
+SceneManager::SceneManager() : m_scenes(0), m_curScene(0) { }
 
 void SceneManager::ProcessInput() {
-    if(curScene) {
-        curScene->ProcessInput();
-    }
+    if(m_curScene)
+        m_curScene->ProcessInput();
 }
 
 void SceneManager::Update(float deltaTime) {
-    if(curScene) {
-        curScene->Update(deltaTime);
-    }
-}
+    if(m_curScene)
+        m_curScene->Update(deltaTime);
 
-void SceneManager::LateUpdate(float deltaTime) {
-    if(curScene) {
-        curScene->LateUpdate(deltaTime);
-    }
+    // if(m_curScene)
+    //     m_curScene->LateUpdate(deltaTime);
 }
 
 void SceneManager::Draw() {
     BeginDrawing();
-
     ClearBackground(RAYWHITE);
 
-    if(curScene) {
-        curScene->Draw();
-    }
+    if(m_curScene)
+        m_curScene->Draw();
+        
     EndDrawing();
 }
 
 unsigned int SceneManager::Add(std::shared_ptr<Scene> scene) {
-    auto inserted = scenes.insert(std::make_pair(insertedSceneID, scene));
+    auto inserted = m_scenes.insert(std::make_pair(insertedSceneID, scene));
 
     inserted.first->second->OnCreate();
 
@@ -42,29 +36,27 @@ unsigned int SceneManager::Add(std::shared_ptr<Scene> scene) {
 }
 
 void SceneManager::Remove(unsigned int id) {
-    auto it = scenes.find(id);
+    auto it = m_scenes.find(id);
 
-    if(it != scenes.end()) {
-        if(curScene == it->second) {
-            curScene = nullptr;
-        }
+    if(it != m_scenes.end()) {
+        if(m_curScene == it->second)
+            m_curScene = nullptr;
 
         it->second->OnDestroy();
 
-        scenes.erase(it);
+        m_scenes.erase(it);
     }
 }
 
 void SceneManager::SwitchTo(unsigned int id) {
-    auto it = scenes.find(id);
+    auto it = m_scenes.find(id);
 
-    if(it != scenes.end()) {
-        if(curScene) {
-            curScene->OnDeactivate();
-        }
+    if(it != m_scenes.end()) {
+        if(m_curScene)
+            m_curScene->OnDeactivate();
 
-        curScene = it->second;
+        m_curScene = it->second;
 
-        curScene->OnActivate();
+        m_curScene->OnActivate();
     }
 }

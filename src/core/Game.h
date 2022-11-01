@@ -17,6 +17,8 @@ public:
 
     void close() const;
 
+    SceneManager getSceneManager() const;
+
 private:
 
     GameConfig m_config;

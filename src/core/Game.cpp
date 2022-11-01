@@ -22,17 +22,14 @@ Game::Game() {
 }
 
 void Game::Update() {
-    // window.Update();
-
     m_sceneManager.ProcessInput();
     m_sceneManager.Update(m_deltaTime);
-    m_sceneManager.LateUpdate(m_deltaTime);
     m_sceneManager.Draw();
 }
 
-// void Game::Calculatem_deltaTime() {
-//     m_deltaTime = clock.restart().asSeconds();
-// }
+SceneManager Game::getSceneManager() const {
+    return m_sceneManager;
+}
 
 bool Game::IsRunning() const {
     return !WindowShouldClose();
