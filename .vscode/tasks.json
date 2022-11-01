@@ -1,0 +1,63 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "RUN (MacOS)",
+            "command": "${workspaceFolder}/bin/main.app",
+            "dependsOn": [ "BUILD (MacOS)" ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "BUILD (MacOS)",
+            "command": "/usr/bin/clang++",
+            // "command": "/usr/bin/clang",
+            "args": [
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                "-g",
+                "-O0",
+                "-std=c++17",
+                "-stdlib=libc++",
+                "-Wall",
+                "-Wno-missing-braces",
+                "-framework",
+                "OpenGL",
+                "-framework",
+                "Cocoa",
+                "-framework",
+                "IOKit",
+                "-I${workspaceFolder}/src/",
+                "${workspaceFolder}/src/main.cpp",
+                "${workspaceFolder}/src/core/*.cpp",
+                "${workspaceFolder}/src/scenes/*.cpp",
+                // "${workspaceFolder}/src/math/*.cpp",
+                // "${workspaceFolder}/src/core/*.cpp",
+                // "${workspaceFolder}/src/util/*.cpp",
+                // "${workspaceFolder}/src/primitives/*.cpp",
+                // "${workspaceFolder}/src/input/*.cpp",
+                // "${workspaceFolder}/src/physics/*.cpp",
+
+                // "-I${workspaceFolder}/lib/raylib/src/",
+                "-L${workspaceFolder}/lib/raylib-static/",
+                "-lraylib",
+
+                "-o",
+                "${workspaceFolder}/bin/main.app"
+            ],
+            "options": {},
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ],
+    "version": "2.0.0"
+}
