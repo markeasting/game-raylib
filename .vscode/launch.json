@@ -17,5 +17,18 @@
             "externalConsole": false,
             "MIMode": "lldb",
         },
+        {
+            "name": "(Linux) Launch",
+            "internalConsoleOptions": "openOnSessionStart",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/main",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+        },
     ]
 }

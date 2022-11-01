@@ -13,9 +13,19 @@
         },
         {
             "type": "shell",
+            "label": "RUN (Linux)",
+            "command": "${workspaceFolder}/bin/main",
+            "dependsOn": [ "BUILD (Linux)" ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
             "label": "BUILD (MacOS)",
             "command": "/usr/bin/clang++",
-            // "command": "/usr/bin/clang",
             "args": [
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
@@ -35,24 +45,51 @@
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/core/*.cpp",
                 "${workspaceFolder}/src/scenes/*.cpp",
-                // "${workspaceFolder}/src/math/*.cpp",
-                // "${workspaceFolder}/src/core/*.cpp",
-                // "${workspaceFolder}/src/util/*.cpp",
-                // "${workspaceFolder}/src/primitives/*.cpp",
-                // "${workspaceFolder}/src/input/*.cpp",
-                // "${workspaceFolder}/src/physics/*.cpp",
 
-                // "-I${workspaceFolder}/lib/raylib/src/",
-                "-L${workspaceFolder}/lib/raylib-static/",
+                "-L${workspaceFolder}/src/lib/raylib/",
                 "-lraylib",
 
                 "-o",
                 "${workspaceFolder}/bin/main.app"
             ],
             "options": {},
-            "problemMatcher": [
-                "$gcc"
+            "problemMatcher": [ "$gcc" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "BUILD (Linux)",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "-O0",
+                "-std=c++17",
+                // "-stdlib=libc++",
+                "-Wall",
+                "-Wno-missing-braces",
+                
+                "${workspaceFolder}/src/main.cpp",
+                "${workspaceFolder}/src/core/*.cpp",
+                "${workspaceFolder}/src/scenes/*.cpp",
+
+                // "-L${workspaceFolder}/src/lib/raylib/",
+                "-lraylib",
+
+                "-lGL",
+                "-lm",
+                "-lpthread",
+                "-ldl",
+                "-lrt",
+                "-lX11",
+
+                "-o",
+                "${workspaceFolder}/bin/main"
             ],
+            "options": {},
+            "problemMatcher": [ "$gcc" ],
             "group": {
                 "kind": "build",
                 "isDefault": true
