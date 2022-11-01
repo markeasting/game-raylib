@@ -1,5 +1,5 @@
+#include "../common.h"
 #include "./SceneManager.h"
-#include "raylib.h"
 
 struct GameConfig {
     const char* windowTitle = "MOI";

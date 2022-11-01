@@ -1,9 +1,6 @@
-
+#include "../common.h"
 #include "Scene.h"
 #include "SceneManager.h"
-#include "raylib.h"
-
-#include <iostream>
 
 SceneManager::SceneManager() : scenes(0), curScene(0) { }
 

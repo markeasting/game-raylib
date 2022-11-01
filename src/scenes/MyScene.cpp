@@ -5,8 +5,6 @@ MyScene::MyScene() {}
 
 void MyScene::OnCreate()
 {
-    // m_initialized = true;
-
     m_camera = { 0 };
     m_camera.position = (Vector3){ 0.0f, 10.0f, 10.0f };  // Camera position
     m_camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };      // Camera looking at point

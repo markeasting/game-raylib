@@ -1,6 +1,6 @@
 #pragma once
+#include "../common.h"
 #include "../core/Scene.h"
-#include "raylib.h"
 
 class MyScene final : public Scene
 {
@@ -15,6 +15,6 @@ public:
     void Draw() override;
 
 private:
-    Camera3D m_camera = { 0 };
+    Camera3D m_camera;
     Vector3 m_cubePosition = { 0.0f, 0.0f, 0.0f };
 };

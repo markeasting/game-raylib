@@ -2,25 +2,7 @@
 
 class SceneManager; // forward declaration, prevent circular import
 
-// class Scene {
-// public:
-
-//     Camera3D m_camera = { 0 };
-
-//     Vector3 m_cubePosition = { 0.0f, 0.0f, 0.0f };
-
-// private:
-//     friend SceneManager;
-
-//     bool m_initialized = false;
-
-//     void init();
-//     void update();
-
-// };
-
-class Scene
-{
+class Scene {
 public:
     // Called when scene initially created. Called once.
     virtual void OnCreate() = 0;
@@ -40,7 +22,7 @@ public:
     // The below functions can be overridden as necessary in our scenes.
     virtual void ProcessInput(){};
     virtual void Update(float deltaTime){};
-    virtual void LateUpdate(float deltaTime){};
+    // virtual void LateUpdate(float deltaTime){};
     virtual void Draw(){};
 
     // virtual ~Scene() = 0;
