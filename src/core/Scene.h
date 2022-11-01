@@ -1,21 +1,50 @@
 #pragma once
-#include "raylib.h"
 
 class SceneManager; // forward declaration, prevent circular import
 
-class Scene {
+// class Scene {
+// public:
+
+//     Camera3D m_camera = { 0 };
+
+//     Vector3 m_cubePosition = { 0.0f, 0.0f, 0.0f };
+
+// private:
+//     friend SceneManager;
+
+//     bool m_initialized = false;
+
+//     void init();
+//     void update();
+
+// };
+
+class Scene
+{
 public:
+    // Called when scene initially created. Called once.
+    virtual void OnCreate() = 0;
 
-    Camera3D m_camera = { 0 };
+    // Called when scene destroyed. Called at most once (if a scene
+    // is not removed from the game, this will never be called).
+    virtual void OnDestroy() = 0;
 
-    Vector3 m_cubePosition = { 0.0f, 0.0f, 0.0f };
+    // Called whenever a scene is transitioned into. Can be
+    // called many times in a typical game cycle.
+    virtual void OnActivate(){};
+
+    // Called whenever a transition out of a scene occurs.
+    // Can be called many times in a typical game cycle.
+    virtual void OnDeactivate(){};
+
+    // The below functions can be overridden as necessary in our scenes.
+    virtual void ProcessInput(){};
+    virtual void Update(float deltaTime){};
+    virtual void LateUpdate(float deltaTime){};
+    virtual void Draw(){};
+
+    // virtual ~Scene() = 0;
 
 private:
     friend SceneManager;
-
-    bool m_initialized = false;
-
-    void init();
-    void update();
-
 };
