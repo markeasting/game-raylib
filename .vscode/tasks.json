@@ -41,12 +41,11 @@
                 "Cocoa",
                 "-framework",
                 "IOKit",
-                "-I${workspaceFolder}/src/",
+
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/core/*.cpp",
                 "${workspaceFolder}/src/scenes/*.cpp",
 
-                "-L${workspaceFolder}/src/lib/raylib/",
                 "-lraylib",
 
                 "-o",
@@ -70,7 +69,7 @@
                 // "-stdlib=libc++",
                 "-Wall",
                 "-Wno-missing-braces",
-                
+
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/core/*.cpp",
                 "${workspaceFolder}/src/scenes/*.cpp",
