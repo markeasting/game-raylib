@@ -1,33 +1,43 @@
 #pragma once
-
-// class SceneManager; // forward declaration, prevent circular import
+#include "../common.h"
 
 class Scene {
 public:
 
+    Scene();
+    // virtual ~Scene() = 0;
+
+    void activate()   { m_isActive = true;  }
+    void deactivate() { m_isActive = false; }
+    bool isActive()   { return m_isActive;  }
+
     // Called when scene initially created. Called once.
-    virtual void OnCreate() = 0;
+    virtual void create() = 0;
 
     // Called when scene destroyed. Called at most once (if a scene
     // is not removed from the game, this will never be called).
-    virtual void OnDestroy() = 0;
+    virtual void destroy() = 0;
 
     // Called whenever a scene is transitioned into. Can be
     // called many times in a typical game cycle.
-    virtual void OnActivate(){};
+    virtual void onActivate(){};
 
     // Called whenever a transition out of a scene occurs.
     // Can be called many times in a typical game cycle.
-    virtual void OnDeactivate(){};
+    virtual void onDeactivate(){};
 
     // The below functions can be overridden as necessary in our scenes.
-    virtual void ProcessInput(){};
-    virtual void Update(float deltaTime){};
-    // virtual void LateUpdate(float deltaTime){};
-    virtual void Draw(){};
+    virtual void processInput(){};
+    virtual void update(float time, float deltaTime){};
+    // virtual void lateUpdate(float time, float deltaTime){};
+    virtual void draw(){};
 
-    // virtual ~Scene() = 0;
+    Camera3D getCamera() { return m_camera; }
 
-private:
-    // friend SceneManager;
+protected:
+    bool m_isActive = false;
+
+    Camera3D m_camera;
+
+    void initCamera();
 };

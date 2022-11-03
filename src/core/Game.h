@@ -12,22 +12,21 @@ class Game {
 public:
     Game();
 
-    void Update();
-    bool IsRunning() const;
+    void update();
+    bool isRunning() const;
 
     void close() const;
 
     SceneManager getSceneManager() const;
+    void registerScenes();
 
 private:
 
     GameConfig m_config;
 
-    // Window window;
-    // WorkingDirectory workingDir;
-
     // sf::Clock clock;
-    float m_deltaTime;
+    float m_deltaTime = 0;
+    float m_time = 0;
 
     SceneManager m_sceneManager;
 };

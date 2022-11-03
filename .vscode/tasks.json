@@ -4,18 +4,19 @@
             "type": "shell",
             "label": "RUN (MacOS)",
             "command": "${workspaceFolder}/bin/main.app",
-            "dependsOn": [ "BUILD (MacOS)" ],
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
+            "dependsOn": [
+                "BUILD (MacOS)"
+            ],
+            "group": "test",
             "problemMatcher": []
         },
         {
             "type": "shell",
             "label": "RUN (Linux)",
             "command": "${workspaceFolder}/bin/main",
-            "dependsOn": [ "BUILD (Linux)" ],
+            "dependsOn": [
+                "BUILD (Linux)"
+            ],
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -41,18 +42,17 @@
                 "Cocoa",
                 "-framework",
                 "IOKit",
-
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/core/*.cpp",
                 "${workspaceFolder}/src/scenes/*.cpp",
-
                 "-lraylib",
-
                 "-o",
                 "${workspaceFolder}/bin/main.app"
             ],
             "options": {},
-            "problemMatcher": [ "$gcc" ],
+            "problemMatcher": [
+                "$gcc"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -66,34 +66,30 @@
                 "-g",
                 "-O0",
                 "-std=c++17",
-                // "-stdlib=libc++",
                 "-Wall",
                 "-Wno-missing-braces",
-
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/core/*.cpp",
                 "${workspaceFolder}/src/scenes/*.cpp",
-
-                // "-L${workspaceFolder}/src/lib/raylib/",
                 "-lraylib",
-
                 "-lGL",
                 "-lm",
                 "-lpthread",
                 "-ldl",
                 "-lrt",
                 "-lX11",
-
                 "-o",
                 "${workspaceFolder}/bin/main"
             ],
             "options": {},
-            "problemMatcher": [ "$gcc" ],
+            "problemMatcher": [
+                "$gcc"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
-        },
+        }
     ],
     "version": "2.0.0"
 }

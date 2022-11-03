@@ -2,10 +2,10 @@
 #include "../common.h"
 #include "../core/Scene.h"
 
-class MyScene final : public Scene
+class SplashScreenScene final : public Scene
 {
 public:
-    MyScene();
+    SplashScreenScene();
 
     void create() override;
     void destroy() override;

@@ -4,8 +4,8 @@ int main(void) {
 
     Game game;
 
-    while (game.IsRunning())
-        game.Update();
+    while (game.isRunning())
+        game.update();
 
     game.close();
 

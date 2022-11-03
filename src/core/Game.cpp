@@ -1,40 +1,59 @@
 #include "./Game.h"
 #include "../scenes/MyScene.h"
+#include "../scenes/SplashScreenScene.h"
 
-Game::Game() {
+#include <iostream>
+
+Game::Game()
+{
     InitWindow(
         m_config.screenWidth,
         m_config.screenHeight,
-        m_config.windowTitle
-    );
+        m_config.windowTitle);
+
     SetTargetFPS(m_config.targetFPS);
 
-    // std::shared_ptr<SceneSplashScreen> splashScreen = std::make_shared<SceneSplashScreen>(workingDir, m_sceneManager, window);
+    this->registerScenes();
+}
+
+void Game::registerScenes()
+{
+    std::shared_ptr<SplashScreenScene> splashScreen = std::make_shared<SplashScreenScene>();
     std::shared_ptr<MyScene> gameScene = std::make_shared<MyScene>();
 
-    // unsigned int splashScreenID = m_sceneManager.Add(splashScreen);
-    unsigned int gameSceneID = m_sceneManager.Add(gameScene);
+    unsigned int splashScreenID = m_sceneManager.add(splashScreen);
+    unsigned int gameSceneID = m_sceneManager.add(gameScene);
 
-    // splashScreen->SetSwitchToScene(gameSceneID);
-    m_sceneManager.SwitchTo(gameSceneID);
+    m_sceneManager.switchTo(splashScreenID);
+}
+
+void Game::update()
+{
+    m_sceneManager.processInput();
+    m_sceneManager.update(m_time, m_deltaTime);
+    m_sceneManager.draw();
 
     m_deltaTime = GetFrameTime();
+    m_time = GetTime();
+
+    if (m_time > 3)
+    {
+        m_sceneManager.deActivate(0);
+        m_sceneManager.activate(1);
+    }
 }
 
-void Game::Update() {
-    m_sceneManager.ProcessInput();
-    m_sceneManager.Update(m_deltaTime);
-    m_sceneManager.Draw();
-}
-
-SceneManager Game::getSceneManager() const {
+SceneManager Game::getSceneManager() const
+{
     return m_sceneManager;
 }
 
-bool Game::IsRunning() const {
+bool Game::isRunning() const
+{
     return !WindowShouldClose();
 }
 
-void Game::close() const {
+void Game::close() const
+{
     CloseWindow();
 }
