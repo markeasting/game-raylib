@@ -7,16 +7,14 @@
 // SceneManager::SceneManager() : m_scenes(0), m_curScene(0) { }
 SceneManager::SceneManager() : m_scenes(0) { }
 
-// @TODO combine all update calls instead of looping through 
-// all scenes multiple times per frame
 void SceneManager::processInput() {
     // if(m_curScene)
     //     m_curScene->processInput();
 
-    for (auto scene : m_scenes) {
-        if (scene.second->isActive())
-            scene.second->processInput();
-    }
+    // for (auto scene : m_scenes) {
+    //     if (scene.second->isActive())
+    //         scene.second->processInput();
+    // }
 }
 
 void SceneManager::update(float time, float deltaTime) {
@@ -24,24 +22,24 @@ void SceneManager::update(float time, float deltaTime) {
     //     m_curScene->update(deltaTime);
     //     // m_curScene->lateUpdate(deltaTime);
 
-    for (auto scene : m_scenes) {
-        if (scene.second->isActive())
-            scene.second->update(time, deltaTime);
-    }
+    // for (auto scene : m_scenes) {
+    //     if (scene.second->isActive())
+    //         scene.second->update(time, deltaTime);
+    // }
 }
 
-void SceneManager::draw() {
+void SceneManager::draw(float time, float deltaTime) {
     BeginDrawing();
     ClearBackground(RAYWHITE);
 
-    // if(m_curScene)
-    //     m_curScene->draw();
-
     for (auto scene : m_scenes) {
-        if (scene.second->isActive())
+        if (scene.second->isActive()) {
+            scene.second->processInput();
+            scene.second->update(time, deltaTime);
             scene.second->draw();
+        }
     }
-        
+
     EndDrawing();
 }
 

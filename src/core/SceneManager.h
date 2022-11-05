@@ -12,7 +12,7 @@ public:
     void processInput();
     void update(float time, float deltaTime);
 
-    void draw();
+    void draw(float time, float deltaTime);
 
     unsigned int add(std::shared_ptr<Scene> scene);
     void remove(unsigned int id);

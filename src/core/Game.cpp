@@ -11,7 +11,7 @@ Game::Game()
         m_config.screenHeight,
         m_config.windowTitle);
 
-    SetTargetFPS(m_config.targetFPS);
+    // SetTargetFPS(m_config.targetFPS);
 
     this->registerScenes();
 }
@@ -31,7 +31,7 @@ void Game::update()
 {
     m_sceneManager.processInput();
     m_sceneManager.update(m_time, m_deltaTime);
-    m_sceneManager.draw();
+    m_sceneManager.draw(m_time, m_deltaTime);
 
     m_deltaTime = GetFrameTime();
     m_time = GetTime();
