@@ -7,7 +7,10 @@
             "dependsOn": [
                 "BUILD (MacOS)"
             ],
-            "group": "test",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
             "problemMatcher": []
         },
         {
@@ -17,10 +20,7 @@
             "dependsOn": [
                 "BUILD (Linux)"
             ],
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
+            "group": "test",
             "problemMatcher": []
         },
         {
@@ -45,6 +45,8 @@
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/core/*.cpp",
                 "${workspaceFolder}/src/scenes/*.cpp",
+                "${workspaceFolder}/src/entity/*.cpp",
+                // "${workspaceFolder}/src/components/*.cpp",
                 "-lraylib",
                 "-o",
                 "${workspaceFolder}/bin/main.app"
@@ -71,6 +73,8 @@
                 "${workspaceFolder}/src/main.cpp",
                 "${workspaceFolder}/src/core/*.cpp",
                 "${workspaceFolder}/src/scenes/*.cpp",
+                "${workspaceFolder}/src/entity/*.cpp",
+                // "${workspaceFolder}/src/components/*.cpp",
                 "-lraylib",
                 "-lGL",
                 "-lm",
