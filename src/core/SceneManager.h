@@ -15,6 +15,9 @@ public:
     void draw(float time, float deltaTime);
 
     unsigned int add(std::shared_ptr<Scene> scene);
+    // template <typename T>
+    // unsigned int add(std::shared_ptr<T> scene);
+
     void remove(unsigned int id);
 
     void activate(unsigned int id);

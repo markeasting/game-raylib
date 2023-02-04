@@ -43,7 +43,10 @@ void SceneManager::draw(float time, float deltaTime) {
     EndDrawing();
 }
 
+// template <typename T>
+// unsigned int SceneManager::add(std::shared_ptr<T> scene) {
 unsigned int SceneManager::add(std::shared_ptr<Scene> scene) {
+
     auto inserted = m_scenes.insert(std::make_pair(m_insertedSceneIdx, scene));
 
     inserted.first->second->create();
