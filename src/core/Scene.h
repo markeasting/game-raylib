@@ -1,11 +1,14 @@
 #pragma once
 #include "../common.h"
+#include "../entity/EntityManager.h"
 
 class Scene {
 public:
 
     Scene();
     // virtual ~Scene() = 0;
+
+    EntityManager m_entityManager = EntityManager();
 
     void activate()   { m_isActive = true;  }
     void deactivate() { m_isActive = false; }
