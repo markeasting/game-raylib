@@ -9,9 +9,10 @@ Game::Game()
     InitWindow(
         m_config.screenWidth,
         m_config.screenHeight,
-        m_config.windowTitle);
+        m_config.windowTitle
+    );
 
-    // SetTargetFPS(m_config.targetFPS);
+    SetTargetFPS(m_config.targetFPS);
 
     this->registerScenes();
 }
