@@ -2,9 +2,18 @@
 #include <iostream>
 #include <cmath>
 
+#include "../components/Cube.h"
+
 MyScene::MyScene() {}
 
-void MyScene::create() {}
+void MyScene::create() {
+    // m_entity.addComponent<Cube>();
+
+    m_entityManager.add(m_entity);
+
+    Transform2D t2d;
+    m_entityManager.addComponent(m_entity, t2d);
+}
 
 void MyScene::processInput() {} // @TODO some kind of input manager / singleton
 
@@ -16,6 +25,9 @@ void MyScene::update(float time, float deltaTime)
 void MyScene::draw()
 {
     BeginMode3D(m_camera);
+
+        // auto cube = m_entity.getComponent(0);
+        // cube.draw.........
 
         DrawCube(m_cubePosition, 2.0f, 2.0f, 2.0f, RED);
         DrawCubeWires(m_cubePosition, 2.0f, 2.0f, 2.0f, MAROON);

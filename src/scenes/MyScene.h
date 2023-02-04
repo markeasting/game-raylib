@@ -1,6 +1,7 @@
 #pragma once
 #include "../common.h"
 #include "../core/Scene.h"
+#include "../entity/Entity.h"
 
 class MyScene final : public Scene
 {
@@ -16,4 +17,5 @@ public:
 
 private:
     Vector3 m_cubePosition = { 0.0f, 0.0f, 0.0f };
+    Entity m_entity = Entity();
 };
